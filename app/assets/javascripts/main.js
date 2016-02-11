@@ -10,10 +10,10 @@ $(function() {
         format: 'json'
       })
         .done(function(data) {
-          $('.container').empty();
+          $('#lighthouseList').empty();
           var images = data.items;
           images.forEach(function(image) {
-            $('<img>').attr('src', image.media.m).appendTo('.container');
+            $('<img>').attr('src', image.media.m).appendTo('#lighthouseList');
           });
         });
     }
