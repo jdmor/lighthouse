@@ -21,12 +21,9 @@ $(function() {
         format: 'json'
       })
         .done(function(data) {
-          // For reference
-          $('#lighthouseList').data('fromFlickr', data);
-
           $('#lighthouseList').empty();
           var images = data.items;
-          var liCollection = $();
+          var wrapperCollection = $();
 
           images.forEach(function(image) {
             var title = image.title;
@@ -55,10 +52,10 @@ $(function() {
             wrapper.append(details).append(source);
             wrapper.appendTo('#lighthouseList');
 
-            liCollection = liCollection.add(wrapper);
+            wrapperCollection = wrapperCollection.add(wrapper);
           });
 
-          handlers.fadeInPhotos(liCollection);
+          handlers.fadeInPhotos(wrapperCollection);
 
         });
     }
