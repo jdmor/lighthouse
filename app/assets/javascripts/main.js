@@ -13,7 +13,6 @@ $(function() {
           $('.container').empty();
           var images = data.items;
           images.forEach(function(image) {
-            console.log(image.media.m);
             $('<img>').attr('src', image.media.m).appendTo('.container');
           });
         });
