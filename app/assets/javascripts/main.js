@@ -17,7 +17,8 @@ $(function() {
           var images = data.items;
           images.forEach(function(image) {
             var title = image.title;
-            var author = $('<span>').text('By ' +  image.author);
+            var author = image.author.replace(/.*\(/, '').replace(/\)/, '');
+            author = 'By ' + author;
             var options = {
               html: 'true'
             };
