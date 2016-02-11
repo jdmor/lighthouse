@@ -10,14 +10,24 @@ $(function() {
         format: 'json'
       })
         .done(function(data) {
+          // For reference
+          $('#lighthouseList').data('fromFlickr', data);
+
           $('#lighthouseList').empty();
           var images = data.items;
           images.forEach(function(image) {
-            $('<img>').attr('src', image.media.m).appendTo('#lighthouseList');
+            var title = $('<p>').text(image.title);
+            var author = $('<p>').text(image.author);
+            var link = $('<a>').attr('href', image.link).text('Source').addClass('btn btn-link');
+            var details = $('<button>').addClass('btn btn-link btn-lg glyphicon glyphicon-info-sign');
+            var wrapper = $('<div>').addClass('item-wrapper');
+            $('<img>').attr('src', image.media.m).appendTo(wrapper);
+            wrapper.append(details);
+            wrapper.appendTo('#lighthouseList');
           });
         });
     }
-  }
+  };
 
 
   $('#loadImages').on('click', function() {
