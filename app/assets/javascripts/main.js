@@ -3,6 +3,17 @@
 $(function() {
 
   var handlers = {
+    fadeInPhotos: function(images) {
+      images.hide();
+      var timer = 0;
+      images.each(function() {
+        var self = $(this);
+        setTimeout(function() {
+          self.fadeIn();
+        }, timer)
+        timer += 50;
+      })
+    },
     loadImages: function() {
       $.getJSON('http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?', {
         tags: 'lighthouse',
@@ -15,6 +26,8 @@ $(function() {
 
           $('#lighthouseList').empty();
           var images = data.items;
+          var liCollection = $();
+
           images.forEach(function(image) {
             var title = image.title;
             var author = image.author.replace(/.*\(/, '').replace(/\)/, '');
@@ -42,8 +55,11 @@ $(function() {
             wrapper.append(details).append(source);
             wrapper.appendTo('#lighthouseList');
 
-
+            liCollection = liCollection.add(wrapper);
           });
+
+          handlers.fadeInPhotos(liCollection);
+
         });
     }
   };
