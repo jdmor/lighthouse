@@ -16,7 +16,7 @@ body {
   display: inline-block;
   padding: 1rem;
 
-  .glyphicon-info-sign {
+  .glyphicon-info-sign, .glyphicon-link {
     position: absolute;
     right: 20px;
     top: 180px;
@@ -30,7 +30,13 @@ body {
 
     &:hover {
       text-decoration: none;
+      opacity: .5;
     }
+  }
+
+  .glyphicon-link {
+    line-height: 22px;
+    right: 48px;
   }
 
   img {
@@ -41,5 +47,18 @@ body {
   }
 
 }
+
+.popover {
+  min-width: 200px;
+  color: #1a1a1a;
+
+  .popover-content a {
+    margin-top: .5rem;
+    display: block;
+  }
+
+}
+
+
 
 

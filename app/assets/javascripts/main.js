@@ -16,14 +16,32 @@ $(function() {
           $('#lighthouseList').empty();
           var images = data.items;
           images.forEach(function(image) {
-            var title = $('<p>').text(image.title);
-            var author = $('<p>').text(image.author);
-            var link = $('<a>').attr('href', image.link).text('Source').addClass('btn btn-link');
-            var details = $('<button>').addClass('btn btn-link btn-lg glyphicon glyphicon-info-sign');
+            var title = image.title;
+            var author = $('<span>').text('By ' +  image.author);
+            var options = {
+              html: 'true'
+            };
+
+            var details = $('<a>')
+              .addClass('btn btn-link btn-lg glyphicon glyphicon-info-sign')
+              .attr('tabindex', '0')
+              .attr('role', 'button')
+              .data('toggle', 'popover')
+              .data('trigger', 'focus')
+              .attr('title', title)
+              .data('content', author)
+              .popover(options);
+
+            var source = $('<a>')
+              .attr('href', image.link)
+              .addClass('btn btn-link glyphicon glyphicon-link');
+
             var wrapper = $('<div>').addClass('item-wrapper');
             $('<img>').attr('src', image.media.m).appendTo(wrapper);
-            wrapper.append(details);
+            wrapper.append(details).append(source);
             wrapper.appendTo('#lighthouseList');
+
+
           });
         });
     }

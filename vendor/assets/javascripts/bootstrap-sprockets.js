@@ -8,5 +8,5 @@
 // require ./bootstrap/scrollspy
 // require ./bootstrap/tab
 // require ./bootstrap/transition
-// require ./bootstrap/tooltip
-// require ./bootstrap/popover
+//= require ./bootstrap/tooltip
+//= require ./bootstrap/popover
