@@ -49,7 +49,10 @@ $(function() {
 
 
   $('#loadImages').on('click', function() {
+    var btn = $(this)[0];
+    btn.disabled = true;
     handlers.loadImages();
+    btn.disabled = false;
   });
 
 });
